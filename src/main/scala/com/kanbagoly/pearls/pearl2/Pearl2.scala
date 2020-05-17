@@ -2,7 +2,7 @@ package com.kanbagoly.pearls.pearl2
 
 object Specification {
 
-  def msc[T](xs: List[T])(implicit ordered: T => Ordered[T]): Int =
+  def msc[A](xs: List[A])(implicit ordered: A => Ordered[A]): Int =
     xs.tails.map {
       case Nil => 0
       case x::xs => xs.count(_ > x)
