@@ -13,6 +13,10 @@ class Pearl1Spec extends AnyWordSpec with Matchers with MinFreeBehavior {
     behave like minFreeAlgorithm(ArrayBased.minFree)
   }
 
+  "Divide and Conquer algorithm" should {
+    behave like minFreeAlgorithm(DivideAndConquer.minFree)
+  }
+
 }
 
 trait MinFreeBehavior {

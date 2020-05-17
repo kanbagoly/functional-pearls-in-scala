@@ -23,3 +23,9 @@ object ArrayBased {
   }
 
 }
+
+object DivideAndConquer {
+
+  def minFree(xs: List[Int]): Int = ???
+
+}
