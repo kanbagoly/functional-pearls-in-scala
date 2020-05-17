@@ -1,6 +1,6 @@
 # functional-pearls-in-scala
 
-Reimplementation of Richard Bird's 
+Reimplementation of
 [Richard Bird](https://en.wikipedia.org/wiki/Richard_Bird_(computer_scientist)) 's
 [Pearls of Functional Algorithm Design](https://www.cambridge.org/core/books/pearls-of-functional-algorithm-design/B0CF0AC5A205AF9491298684113B088F)
 in Scala.
