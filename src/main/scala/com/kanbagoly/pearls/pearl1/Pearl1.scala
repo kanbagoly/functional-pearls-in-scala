@@ -1,4 +1,4 @@
-package com.kanbagoly.pearls
+package com.kanbagoly.pearls.pearl1
 
 import scala.annotation.tailrec
 
