@@ -1,5 +1,7 @@
 package com.kanbagoly.pearls
 
+import scala.annotation.tailrec
+
 object Naive {
 
   def minFree(xs: List[Int]): Int =
@@ -26,6 +28,17 @@ object ArrayBased {
 
 object DivideAndConquer {
 
-  def minFree(xs: List[Int]): Int = ???
+  def minFree(xs: List[Int]): Int = minFrom(0)(xs, xs.length)
+
+  @tailrec
+  def minFrom(a: Int)(xs: List[Int], n: Int): Int =
+    if (n == 0) a
+    else {
+      val b = a + 1 + n / 2
+      val (us, vs) = xs.partition(_ < b)
+      val m = us.length
+      if (m == b - a) minFrom(b)(vs, n - m)
+      else minFrom(a)(us, m)
+    }
 
 }
