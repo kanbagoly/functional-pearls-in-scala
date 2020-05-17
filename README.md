@@ -10,8 +10,8 @@ the known issues.
 
 ### known issues
 #### Pearl 1 - The smallest free number
-The array based solution in the book able to provide an _O(n)_ time complexity to create an array used by the algorithm.
-I could not find such way to create an array In Scala. I needed to chose between pure functional programming with
+The array based solution in the book able to build an array with _O(n)_ time complexity.
+I could not find such way to create it In Scala. I needed to choose between pure functional programming with
 increased time complexity or using mutation. I ended up using mutation to create the array:
 ```scala
 val array = Array.fill(n + 1)(false)
