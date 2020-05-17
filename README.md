@@ -19,5 +19,5 @@ xs.withFilter(_ <= n).foreach(array(_) = true)
 ```
 
 ### other implementations in Scala
-https://github.com/qtamaki/pearls
-https://github.com/robberthcz/ScalaPearls
+https://github.com/qtamaki/pearls  
+https://github.com/robberthcz/ScalaPearls  
