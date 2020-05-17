@@ -5,8 +5,8 @@ import org.scalatest.wordspec.AnyWordSpec
 
 class Pearl1Spec extends AnyWordSpec with Matchers with MinFreeBehavior {
 
-  "Naive algorithm" should {
-    behave like minFreeAlgorithm(Naive.minFree)
+  "Specification" should {
+    behave like minFreeAlgorithm(Specification.minFree)
   }
 
   "Array based algorithm" should {

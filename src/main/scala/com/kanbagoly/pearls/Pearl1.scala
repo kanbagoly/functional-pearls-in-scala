@@ -2,7 +2,7 @@ package com.kanbagoly.pearls
 
 import scala.annotation.tailrec
 
-object Naive {
+object Specification {
 
   def minFree(xs: List[Int]): Int =
     LazyList.from(0).diff(xs).head
