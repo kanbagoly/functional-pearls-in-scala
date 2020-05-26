@@ -17,7 +17,7 @@ val array = Array.fill(n + 1)(false)
 xs.withFilter(_ <= n).foreach(array(_) = true)
 ```
 The Divide and Conquer algorithm in the book works faster than the array based one. In this solution the opposite is 
-true. The Divide and Conquer solution is slower even if it made sure to use tail recursive function. 
+true. The Divide and Conquer solution is much slower even if it made sure to use tail recursive function. 
 #### Pearl 2 - A surpassing problem
 The Divide and Conquer solution needed to be changed to be tail recursive. For large inputs without this change it died
 with stack overflow error.  
