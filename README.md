@@ -8,7 +8,7 @@ in Scala.
 Please let me know if you have better, more compact or more functional solution.
 
 ### deviation from the Haskell solutions in the book
-#### Pearl 1 - The smallest free number
+#### pearl 1 - The smallest free number
 The array based solution in the book is able to build an array with _O(n)_ time complexity.
 I could not find such way to create it in Scala. I needed to choose between pure functional programming with
 increased time complexity or using mutation. I ended up using mutation to create the array:
@@ -16,9 +16,7 @@ increased time complexity or using mutation. I ended up using mutation to create
 val array = Array.fill(n + 1)(false)
 xs.withFilter(_ <= n).foreach(array(_) = true)
 ```
-The Divide and Conquer algorithm in the book works faster than the array based one. In this solution the opposite is 
-true. The Divide and Conquer solution is much slower even if it made sure to use tail recursive function. 
-#### Pearl 2 - A surpassing problem
+#### pearl 2 - A surpassing problem
 The Divide and Conquer solution needed to be changed to be tail recursive. For large inputs without this change it died
 with stack overflow error.  
 The solution accepts empty list opposite to the book, as it was easy to implement.

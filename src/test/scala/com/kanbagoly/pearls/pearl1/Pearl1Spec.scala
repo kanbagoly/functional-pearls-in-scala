@@ -15,6 +15,13 @@ class Pearl1Spec extends AnyWordSpec with Matchers with MinFreeBehavior {
 
   "Divide and Conquer algorithm" should {
     behave like minFreeAlgorithm(DivideAndConquer.minFree)
+
+    "not throw stack overflow exception" when {
+      "executed with large input" in {
+        val largeNumber = 1000000
+        DivideAndConquer.minFree((0 to largeNumber).toList) should be(largeNumber + 1)
+      }
+    }
   }
 
 }

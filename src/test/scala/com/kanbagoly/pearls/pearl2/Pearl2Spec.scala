@@ -14,7 +14,7 @@ class Pearl2Spec extends AnyWordSpec with Matchers with MaximumSurpasserCountBeh
 
     "not throw stack overflow exception" when {
       "executed with large input" in {
-        DivideAndConquer.msc(List.fill(100000)('a')) should be(0)
+        DivideAndConquer.msc(List.fill(1000000)('a')) should be(0)
       }
     }
   }
