@@ -12,4 +12,9 @@ object Specification {
 
 object DivideAndConquer {
 
+  def msc[A](xs: List[A])(implicit ordered: A => Ordered[A]): Int =
+    table(xs).map(_._2).max
+
+  private def table[A](xs: List[A])(implicit ordered: A => Ordered[A]): List[(A, Int)] = ???
+
 }

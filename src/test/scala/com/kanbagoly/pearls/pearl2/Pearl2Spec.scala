@@ -22,7 +22,7 @@ class Pearl2Spec extends AnyWordSpec with Matchers {
         Specification.msc(List('a', 'b')) should be(1)
       }
       "called with the example from the book" in {
-        Specification.msc(List('G', 'E', 'N', 'E', 'R', 'A', 'T', 'I', 'N', 'G')) should be(6)
+        Specification.msc("GENERATING".toList) should be(6)
       }
     }
   }
