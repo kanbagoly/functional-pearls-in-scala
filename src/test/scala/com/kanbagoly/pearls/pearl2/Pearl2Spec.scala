@@ -8,7 +8,7 @@ class Pearl2Spec extends AnyWordSpec with Matchers {
   "Maximum Surpasser Count Specification" should {
     "return 0" when {
       "called with empty list" in {
-        Specification.msc[Char](Nil) should be(0)
+        Specification.msc(Nil) should be(0)
       }
       "called with list with one item" in {
         Specification.msc(List('a')) should be(0)
