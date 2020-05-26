@@ -3,28 +3,40 @@ package com.kanbagoly.pearls.pearl2
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-class Pearl2Spec extends AnyWordSpec with Matchers {
+class Pearl2Spec extends AnyWordSpec with Matchers with MaximumSurpasserCountBehavior {
 
-  "Maximum Surpasser Count Specification" should {
+  "Specification" should {
+    behave like maxSurpasserCountAlgorithm(Specification.msc)
+  }
+
+  "Divide and Conquer algorithm" should {
+    behave like maxSurpasserCountAlgorithm(DivideAndConquer.msc)
+  }
+
+}
+
+trait MaximumSurpasserCountBehavior {
+  this: AnyWordSpec with Matchers =>
+
+  def maxSurpasserCountAlgorithm(algorithm: List[Char] => Int): Unit = {
     "return 0" when {
       "called with empty list" in {
-        Specification.msc(Nil) should be(0)
+        algorithm(Nil) should be(0)
       }
       "called with list with one item" in {
-        Specification.msc(List('a')) should be(0)
+        algorithm(List('a')) should be(0)
       }
       "called with elements in descending order" in {
-        Specification.msc(List('b', 'a')) should be(0)
+        algorithm(List('b', 'a')) should be(0)
       }
     }
     "return positive value" when {
       "called with elements in ascending order" in {
-        Specification.msc(List('a', 'b')) should be(1)
+        algorithm(List('a', 'b')) should be(1)
       }
       "called with the example from the book" in {
-        Specification.msc("GENERATING".toList) should be(6)
+        algorithm("GENERATING".toList) should be(6)
       }
     }
   }
-
 }
