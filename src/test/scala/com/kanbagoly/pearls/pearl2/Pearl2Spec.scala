@@ -11,6 +11,10 @@ class Pearl2Spec extends AnyWordSpec with Matchers with MaximumSurpasserCountBeh
 
   "Divide and Conquer algorithm" should {
     behave like maxSurpasserCountAlgorithm(DivideAndConquer.msc)
+
+    "able to work with large input" in {
+      DivideAndConquer.msc(List.fill(1000000)('a')) should be(0)
+    }
   }
 
 }

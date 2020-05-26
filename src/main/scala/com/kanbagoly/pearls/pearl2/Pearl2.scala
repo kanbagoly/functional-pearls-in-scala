@@ -1,5 +1,7 @@
 package com.kanbagoly.pearls.pearl2
 
+import scala.annotation.tailrec
+
 object Specification {
 
   def msc[A](xs: List[A])(implicit ordered: A => Ordered[A]): Int =
@@ -13,6 +15,7 @@ object Specification {
 object DivideAndConquer {
 
   //TODO: Deviation from the book
+  // TODO: Make it tail recursive to work on large values
   def msc[A](xs: List[A])(implicit ordered: A => Ordered[A]): Int = xs match {
     case Nil => 0
     case xs => table(xs).map(_._2).max
@@ -27,12 +30,16 @@ object DivideAndConquer {
       join(m - n, table(ys), table(zs))
   }
 
-  private def join[A](n: Int, txs: List[(A, Int)], tys: List[(A, Int)])(implicit ordered: A => Ordered[A]): List[(A, Int)] =
+  @tailrec
+  private def join[A](n: Int,
+                      txs: List[(A, Int)],
+                      tys: List[(A, Int)],
+                      acc: List[(A, Int)] = Nil)(implicit ordered: A => Ordered[A]): List[(A, Int)] =
     (n, txs, tys) match {
-      case (0, txs, Nil) => txs
-      case (_, Nil, tys) => tys
-      case (n, (x, c)::txs1, (y, _)::_) if x < y => (x , c + n) :: join(n, txs1, tys)
-      case (n, _, (y, d)::tys1) => (y, d) :: join(n - 1, txs, tys1)
+      case (0, txs, Nil) => acc.reverse ::: txs
+      case (_, Nil, tys) => acc.reverse ::: tys
+      case (n, (x, c)::txs1, (y, _)::_) if x < y => join(n, txs1, tys, (x , c + n) :: acc)
+      case (n, _, (y, d)::tys1) => join(n - 1, txs, tys1, (y, d) :: acc)
     }
 
 }
