@@ -1,12 +1,12 @@
-package com.kanbagoly.pearls
+package com.kanbagoly.pearls.pearl1
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
 class Pearl1Spec extends AnyWordSpec with Matchers with MinFreeBehavior {
 
-  "Naive algorithm" should {
-    behave like minFreeAlgorithm(Naive.minFree)
+  "Specification" should {
+    behave like minFreeAlgorithm(Specification.minFree)
   }
 
   "Array based algorithm" should {
@@ -15,6 +15,13 @@ class Pearl1Spec extends AnyWordSpec with Matchers with MinFreeBehavior {
 
   "Divide and Conquer algorithm" should {
     behave like minFreeAlgorithm(DivideAndConquer.minFree)
+
+    "not throw stack overflow exception" when {
+      "executed with large input" in {
+        val largeNumber = 1000000
+        DivideAndConquer.minFree((0 to largeNumber).toList) should be(largeNumber + 1)
+      }
+    }
   }
 
 }
@@ -22,7 +29,7 @@ class Pearl1Spec extends AnyWordSpec with Matchers with MinFreeBehavior {
 trait MinFreeBehavior {
   this: AnyWordSpec with Matchers =>
 
-  def minFreeAlgorithm(algorithm: List[Int] => Int) {
+  def minFreeAlgorithm(algorithm: List[Int] => Int): Unit = {
     "return first element" when {
       "called with empty list" in {
         algorithm(Nil) should be(0)
