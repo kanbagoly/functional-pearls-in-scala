@@ -17,8 +17,8 @@ val array = Array.fill(n + 1)(false)
 xs.withFilter(_ <= n).foreach(array(_) = true)
 ```
 #### pearl 2 - A surpassing problem
-The Divide and Conquer solution needed to be changed to be tail recursive. For large inputs without this change it died
-with stack overflow error.  
+The Divide and Conquer solution needed to be changed to be tail recursive. Without this change it the execution throws a
+stack overflow exception for large inputs.  
 The solution accepts empty list opposite to the book, as it was easy to implement.
 
 ### other implementations in Scala
