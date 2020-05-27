@@ -1,7 +1,5 @@
 package com.kanbagoly.pearls.pearl2
 
-import com.kanbagoly.pearls.pearl2.DivideAndConquer.join
-
 import scala.annotation.tailrec
 
 object Specification {
