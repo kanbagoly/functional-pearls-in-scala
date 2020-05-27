@@ -14,8 +14,6 @@ object Specification {
 
 object DivideAndConquer {
 
-  //TODO: Deviation from the book
-  // TODO: Make it tail recursive to work on large values
   def msc[A](xs: List[A])(implicit ordered: A => Ordered[A]): Int = xs match {
     case Nil => 0
     case xs => table(xs).map(_._2).max
