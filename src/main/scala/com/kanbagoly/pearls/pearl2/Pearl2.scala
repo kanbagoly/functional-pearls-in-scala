@@ -1,5 +1,7 @@
 package com.kanbagoly.pearls.pearl2
 
+import com.kanbagoly.pearls.pearl2.DivideAndConquer.join
+
 import scala.annotation.tailrec
 
 object Specification {
@@ -33,11 +35,11 @@ object DivideAndConquer {
                       txs: List[(A, Int)],
                       tys: List[(A, Int)],
                       acc: List[(A, Int)] = Nil)(implicit ordered: A => Ordered[A]): List[(A, Int)] =
-    (n, txs, tys) match {
-      case (0, txs, Nil) => acc.reverse ::: txs
-      case (_, Nil, tys) => acc.reverse ::: tys
-      case (n, (x, c)::txs1, (y, _)::_) if x < y => join(n, txs1, tys, (x , c + n) :: acc)
-      case (n, _, (y, d)::tys1) => join(n - 1, txs, tys1, (y, d) :: acc)
+    (txs, tys) match {
+      case (txs, Nil) if n == 0 => acc.reverse ::: txs
+      case (Nil, tys) => acc.reverse ::: tys
+      case ((x, c)::txs1, (y, _)::_) if x < y => join(n, txs1, tys, (x , c + n) :: acc)
+      case (_, (y, d)::tys1) => join(n - 1, txs, tys1, (y, d) :: acc)
     }
 
 }
