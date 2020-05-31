@@ -15,3 +15,10 @@ object Pearl4 {
   }
 
 }
+
+object DivideAndConquer {
+
+  def smallest[A](k: Int, xs: List[A], ys: List[A])(implicit ordered: A => Ordered[A]): A =
+    xs.head
+
+}
