@@ -3,14 +3,22 @@ package com.kanbagoly.pearls.pearl4
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
+import scala.collection.immutable.ArraySeq
+
 class Pearl4Spec extends AnyWordSpec with Matchers with SmallestBehavior {
 
   "Specification" should {
     behave like smallestAlgorithm(Specification.smallest)
   }
 
-  "Divide and Conquer algorithm" should {
-    behave like smallestAlgorithm(DivideAndConquer.smallest)
+  "Divide and Conquer on list" should {
+    behave like smallestAlgorithm(DivideAndConquerOnList.smallest)
+  }
+
+  "Divide and Conquer on array" should {
+    behave like smallestAlgorithm(
+      (k: Int, xs: List[Int], ys: List[Int]) => DivideAndConquerOnArray.smallest(k, xs.toArray, ys.toArray)
+    )
   }
 
 }
@@ -32,7 +40,7 @@ trait SmallestBehavior {
       "input is large" in {
         val limit = 200000
         val mean = limit / 2
-        DivideAndConquer.smallest(mean, (0 to limit by 2).toList, (1 to limit + 1 by 2).toList) should be(mean)
+        DivideAndConquerOnList.smallest(mean, (0 to limit by 2).toList, (1 to limit + 1 by 2).toList) should be(mean)
       }
     }
 

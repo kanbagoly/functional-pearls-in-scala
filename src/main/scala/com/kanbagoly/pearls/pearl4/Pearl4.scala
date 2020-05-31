@@ -16,7 +16,7 @@ object Specification {
 
 }
 
-object DivideAndConquer {
+object DivideAndConquerOnList {
 
   @tailrec
   def smallest[A](k: Int, zs: List[A], ws: List[A])(implicit ordered: A => Ordered[A]): A = (zs, ws) match {
@@ -34,5 +34,13 @@ object DivideAndConquer {
         case (false, false) => smallest(k - q - 1, zs, vs)
       }
   }
+
+}
+
+object DivideAndConquerOnArray {
+
+  //@tailrec
+  def smallest[A](k: Int, zs: Array[A], ws: Array[A])(implicit ordered: A => Ordered[A]): A =
+    DivideAndConquerOnList.smallest(k, zs.toList, ws.toList)
 
 }
