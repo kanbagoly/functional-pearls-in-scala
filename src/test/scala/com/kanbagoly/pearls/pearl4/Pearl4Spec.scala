@@ -3,8 +3,6 @@ package com.kanbagoly.pearls.pearl4
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-import scala.collection.immutable.ArraySeq
-
 class Pearl4Spec extends AnyWordSpec with Matchers with SmallestBehavior {
 
   "Specification" should {

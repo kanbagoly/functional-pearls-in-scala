@@ -39,8 +39,21 @@ object DivideAndConquerOnList {
 
 object DivideAndConquerOnArray {
 
-  //@tailrec
-  def smallest[A](k: Int, zs: Array[A], ws: Array[A])(implicit ordered: A => Ordered[A]): A =
-    DivideAndConquerOnList.smallest(k, zs.toList, ws.toList)
+  def smallest[A](k: Int, xa: Array[A], ya: Array[A])(implicit ordered: A => Ordered[A]): A = {
+    @tailrec def search(k: Int)(lx: Int, rx: Int)(ly: Int, ry: Int): A =
+      if (lx == rx) ya(k)
+      else if (ly == ry) xa(k)
+      else {
+        val mx = (lx + rx) / 2
+        val my = (ly + ry) / 2
+        (xa(mx) < ya(my), k <= mx + my) match {
+          case (true, true) => search(k)(lx, rx)(ly, my)
+          case (true, false) => search(k - mx - 1)(mx, rx)(ly, ry)
+          case (false, true) => search(k)(lx , mx)(ly, ry)
+          case (false, false) => search(k - my - 1)(lx , rx)(my, ry)
+        }
+      }
+    search(k)(0, xa.length)(0, ya.length)
+  }
 
 }
