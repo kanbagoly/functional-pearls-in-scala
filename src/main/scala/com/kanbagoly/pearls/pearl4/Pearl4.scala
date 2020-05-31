@@ -18,7 +18,15 @@ object Pearl4 {
 
 object DivideAndConquer {
 
-  def smallest[A](k: Int, xs: List[A], ys: List[A])(implicit ordered: A => Ordered[A]): A =
-    xs.head
+  def smallest[A](k: Int, zs: List[A], ws: List[A])(implicit ordered: A => Ordered[A]): A = (zs, ws) match {
+    case (zs, Nil) => zs(k)
+    case (Nil, ws) => ws(k)
+    case (zs, ws) =>
+      val p = zs.size / 2
+      val q = ws.size / 2
+      val (xs, a::ys) = zs.splitAt(p)
+      val (us, b::vs) = ws.splitAt(q)
+      b
+  }
 
 }
