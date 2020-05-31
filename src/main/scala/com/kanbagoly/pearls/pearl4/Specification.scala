@@ -2,7 +2,7 @@ package com.kanbagoly.pearls.pearl4
 
 import scala.annotation.tailrec
 
-object Pearl4 {
+object Specification {
 
   def smallest[A](k: Int, xs: List[A], ys: List[A])(implicit ordered: A => Ordered[A]): A = {
     @tailrec def union(xs: List[A], ys: List[A], acc: List[A] = Nil): List[A] = (xs, ys) match {
