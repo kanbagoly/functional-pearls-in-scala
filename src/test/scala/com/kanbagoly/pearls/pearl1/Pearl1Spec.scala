@@ -29,7 +29,7 @@ class Pearl1Spec extends AnyWordSpec with Matchers with MinFreeBehavior {
 trait MinFreeBehavior {
   this: AnyWordSpec with Matchers =>
 
-  def minFreeAlgorithm(algorithm: List[Int] => Int): Unit = {
+  def minFreeAlgorithm(algorithm: List[Int] => Int): Unit =
     "return first element" when {
       "called with empty list" in {
         algorithm(Nil) should be(0)
@@ -45,5 +45,5 @@ trait MinFreeBehavior {
         algorithm(example) should be(15)
       }
     }
-  }
+
 }
