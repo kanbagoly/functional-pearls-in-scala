@@ -18,6 +18,7 @@ object Pearl4 {
 
 object DivideAndConquer {
 
+  @tailrec
   def smallest[A](k: Int, zs: List[A], ws: List[A])(implicit ordered: A => Ordered[A]): A = (zs, ws) match {
     case (zs, Nil) => zs(k)
     case (Nil, ws) => ws(k)
@@ -26,7 +27,12 @@ object DivideAndConquer {
       val q = ws.size / 2
       val (xs, a::ys) = zs.splitAt(p)
       val (us, b::vs) = ws.splitAt(q)
-      b
+      (a < b, k <= p + q) match {
+        case (true, true) => smallest(k, zs, us)
+        case (true, false) => smallest(k - p - 1 , ys, ws)
+        case (false, true) => smallest(k, xs, ws)
+        case (false, false) => smallest(k - q - 1, zs, vs)
+      }
   }
 
 }
