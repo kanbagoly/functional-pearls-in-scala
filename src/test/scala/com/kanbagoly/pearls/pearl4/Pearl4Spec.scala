@@ -3,7 +3,6 @@ package com.kanbagoly.pearls.pearl4
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-// TODO: Test for large input
 class Pearl4Spec extends AnyWordSpec with Matchers with SmallestBehavior {
 
   "Specification" should {
