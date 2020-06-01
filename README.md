@@ -41,7 +41,7 @@ search k (lx, rx) (ly, ry)
                 where mx = (lx+rx ) `div` 2; my = (ly + ry) `div` 2
 ```
 I believe the indices in the `search` function should be changed to:
-```
+```haskell
 search k (lx, rx) (ly, ry)
   | lx == rx  = ya ! (ly + k)
   | ly == ry  = xa ! (lx + k)
