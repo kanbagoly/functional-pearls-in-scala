@@ -24,7 +24,6 @@ The solution accepts empty list opposite to the book, as it was easy to implemen
 
 #### pearl 4 - A selection problem
 In the array based divide and conquer solution probably has some typo with the indices in the book (7ht printing 2014).
-The solution in the book:
 ```haskell
 smallest :: Int -> (Array Int a, Array Int a) -> a
 smallest k (xa, ya) = search k (0, m + 1) (0, n + 1)
