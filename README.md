@@ -8,6 +8,9 @@ solutions in Scala.
 Please let me know if you have better, more compact or more functional solutions.
 
 ### deviation from the Haskell solutions in the book
+Recursive functions which are working fine in Haskell are needed to change (if possible) to be explicitly tail recursive
+in Scala. Without these change the execution which do lot of recursive calls throws a stack overflow exception.  
+
 #### pearl 1 - The smallest free number
 The array based solution in the book is able to build an array with _O(n)_ time complexity.
 I could not find such way to create it in Scala. I needed to choose between pure functional programming with
@@ -17,9 +20,7 @@ val array = Array.fill(n + 1)(false)
 xs.withFilter(_ <= n).foreach(array(_) = true)
 ```
 #### pearl 2 - A surpassing problem
-The divide and conquer solution needed to be changed to be tail recursive. Without this change the execution throws a
-stack overflow exception for large inputs.  
-The solution accepts empty list opposite to the book, as it was easy to implement.
+The solution accepts empty list opposite to the book, as it was easy to implement.  
 
 #### pearl 4 - A selection problem
 In the array based divide and conquer solution probably has some typo with the indices in the book (7ht printing 2014).
