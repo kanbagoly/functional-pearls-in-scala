@@ -29,15 +29,15 @@ object DivideAndConquer {
   }
 
   @tailrec
-  private def join[A](n: Int,
+  private def join[A](length: Int,
                       txs: List[(A, Int)],
                       tys: List[(A, Int)],
                       acc: List[(A, Int)] = Nil)(implicit ordered: A => Ordered[A]): List[(A, Int)] =
     (txs, tys) match {
-      case (txs, Nil) if n == 0 => acc.reverse ::: txs
+      case (txs, Nil) if length == 0 => acc.reverse ::: txs
       case (Nil, tys) => acc.reverse ::: tys
-      case ((x, c)::txs1, (y, _)::_) if x < y => join(n, txs1, tys, (x , c + n) :: acc)
-      case (_, (y, d)::tys1) => join(n - 1, txs, tys1, (y, d) :: acc)
+      case ((x, c)::txs1, (y, _)::_) if x < y => join(length, txs1, tys, (x, c + length) :: acc)
+      case (_, (y, d)::tys1) => join(length - 1, txs, tys1, (y, d) :: acc)
     }
 
 }
