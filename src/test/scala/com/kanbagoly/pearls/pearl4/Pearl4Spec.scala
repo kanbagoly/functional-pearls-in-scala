@@ -38,7 +38,7 @@ trait SmallestBehavior {
       "input is large" in {
         val limit = 200000
         val mean = limit / 2
-        DivideAndConquerOnList.smallest(mean, (0 to limit by 2).toList, (1 to limit + 1 by 2).toList) should be(mean)
+        algorithm(mean, (0 to limit by 2).toList, (1 to limit + 1 by 2).toList) should be(mean)
       }
     }
 
