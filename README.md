@@ -17,10 +17,41 @@ val array = Array.fill(n + 1)(false)
 xs.withFilter(_ <= n).foreach(array(_) = true)
 ```
 #### pearl 2 - A surpassing problem
-The Divide and Conquer solution needed to be changed to be tail recursive. Without this change the execution throws a
+The divide and conquer solution needed to be changed to be tail recursive. Without this change the execution throws a
 stack overflow exception for large inputs.  
 The solution accepts empty list opposite to the book, as it was easy to implement.
 
+#### pearl 4 - A selection problem
+In the array based divide and conquer solution probably has some typo with the indices in the book (7ht printing 2014).
+The solution in the book:
+```haskell
+smallest :: Int -> (Array Int a, Array Int a) -> a
+smallest k (xa, ya) = search2 k (0, m + 1) (0, n + 1)
+                      where (0, m) = bounds xa
+                            (0, n) = bounds ya
+
+search k (lx, rx) (ly, ry)
+  | lx == rx  = ya ! k
+  | ly == ry  = xa ! k
+  | otherwise = case (xa ! mx < ya ! my, k <= mx + my) of
+                (True, True)   -> search k (lx , rx) (ly, my)
+                (True, False)  -> search (k - mx - 1) (mx, rx) (ly, ry)
+                (False, True)  -> search k (lx , mx) (ly, ry)
+                (False, False) -> search (k - my - 1) (lx, rx) (my, ry)
+                where mx = (lx+rx ) `div` 2; my = (ly + ry) `div` 2
+```
+I believe the indices in the `search` function should be changed to:
+```
+search k (lx, rx) (ly, ry)
+  | lx == rx  = ya ! (ly + k)
+  | ly == ry  = xa ! (lx + k)
+  | otherwise = case (xa ! mx < ya ! my, k <= mx - lx + my - ly) of
+                (True, True)   -> search k (lx , rx) (ly, my)
+                (True, False)  -> search (k - (mx - lx) - 1) (mx + 1, rx) (ly, ry)
+                (False, True)  -> search k (lx , mx) (ly, ry)
+                (False, False) -> search (k - (my - ly) - 1) (lx, rx) (my + 1, ry)
+                where mx = (lx+rx ) `div` 2; my = (ly + ry) `div` 2
+```
 ### other implementations in Scala
 https://github.com/qtamaki/pearls  
 https://github.com/robberthcz/ScalaPearls  
