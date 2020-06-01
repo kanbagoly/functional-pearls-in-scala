@@ -26,7 +26,7 @@ In the array based divide and conquer solution probably has some typo with the i
 The solution in the book:
 ```haskell
 smallest :: Int -> (Array Int a, Array Int a) -> a
-smallest k (xa, ya) = search2 k (0, m + 1) (0, n + 1)
+smallest k (xa, ya) = search k (0, m + 1) (0, n + 1)
                       where (0, m) = bounds xa
                             (0, n) = bounds ya
 
