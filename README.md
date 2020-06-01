@@ -3,9 +3,9 @@
 Reimplementation of
 [Richard Bird](https://en.wikipedia.org/wiki/Richard_Bird_(computer_scientist)) 's
 [Pearls of Functional Algorithm Design](https://www.cambridge.org/core/books/pearls-of-functional-algorithm-design/B0CF0AC5A205AF9491298684113B088F)
-in Scala.
+solutions in Scala.
 
-Please let me know if you have better, more compact or more functional solution.
+Please let me know if you have better, more compact or more functional solutions.
 
 ### deviation from the Haskell solutions in the book
 #### pearl 1 - The smallest free number
