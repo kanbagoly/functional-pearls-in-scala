@@ -8,8 +8,8 @@ solutions in Scala.
 Please let me know if you have better, more compact or more functional solutions.
 
 ### deviation from the Haskell solutions in the book
-Recursive functions which are working fine in Haskell are needed to change (if possible) to be explicitly tail recursive
-in Scala. Without these change the execution which do lot of recursive calls throws a stack overflow exception.  
+Recursive functions which work fine in Haskell require change (if possible) to be explicitly tail recursive
+in Scala. Without these changes the execution which does a lot of recursive calls throws a stack overflow exception.  
 
 #### pearl 1 - The smallest free number
 The array based solution in the book is able to build an array with _O(n)_ time complexity.
