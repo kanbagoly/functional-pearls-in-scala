@@ -23,7 +23,7 @@ xs.withFilter(_ <= n).foreach(array(_) = true)
 The solution accepts empty list opposite to the book, as it was easy to implement.  
 
 #### pearl 4 - A selection problem
-In the array based divide and conquer solution probably has some typo with the indices in the book (7ht printing 2014).
+In the array based divide and conquer solution probably has some typo with the indices in the book (7th printing 2014).
 ```haskell
 smallest :: Int -> (Array Int a, Array Int a) -> a
 smallest k (xa, ya) = search k (0, m + 1) (0, n + 1)
@@ -38,7 +38,7 @@ search k (lx, rx) (ly, ry)
                 (True, False)  -> search (k - mx - 1) (mx, rx) (ly, ry)
                 (False, True)  -> search k (lx , mx) (ly, ry)
                 (False, False) -> search (k - my - 1) (lx, rx) (my, ry)
-                where mx = (lx+rx ) `div` 2; my = (ly + ry) `div` 2
+                where mx = (lx + rx) `div` 2; my = (ly + ry) `div` 2
 ```
 I believe the indices in the `search` function should be changed to:
 ```haskell
